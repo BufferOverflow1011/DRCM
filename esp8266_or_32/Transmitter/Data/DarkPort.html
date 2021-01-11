@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<title>Emergency Portal</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="Dark.css">
+
+
+<style>
+
+/* Set the width of the sidebar to 120px */
+.w3-sidebar {width: 120px;background: rgb(31, 31, 31);}
+/* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
+#main {margin-left: 120px}
+/* Remove margins from "page content" on small screens */
+@media only screen and (max-width: 600px) {
+  #main {
+    margin-left: 0
+    
+  }
+}
+
+input[type=text] {
+  border: 3px solid rgb(0, 0, 0);
+  -webkit-transition: 1s;
+  transition: 0.5s;
+  outline: none;
+}
+
+
+input[type=text],textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 5px;
+  resize: vertical;
+  -webkit-transition: 1.9s;
+  transition: 0.5s;
+  outline: none;
+}
+input[type=text]:focus {
+  border: 3px solid rgb(255, 252, 252);
+  background-color: rgb(214, 213, 213);
+}
+
+
+
+</style>
+<body class="w3-black">
+
+<!-- Icon Bar (Sidebar - hidden on small screens) -->
+<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
+  <!-- Avatar image in top left corner -->
+
+  <!-- Navbar on large and medium screens (Hidden on small screens) -->
+  <a href="#" class="w3-bar-item w3-button w3-padding-large w3-black">
+
+    <p>HOME</p>
+  </a>
+
+  <a href="#about" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <p>ABOUT</p>
+  </a>
+
+  <a href="#form" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <p>FORM</p>
+  </a>
+
+</nav>
+
+<!-- Navbar on small screens (Hidden on medium and large screens) -->
+<div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
+  <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
+    <a href="#" class="w3-bar-item w3-button" style="width:25% !important">HOME</a>
+    <a href="#about" class="w3-bar-item w3-button" style="width:25% !important">ABOUT</a>
+    <a href="#form" class="w3-bar-item w3-button" style="width:25% !important">FORM</a>
+  </div>
+</div>
+
+<!-- Page Content -->
+<div class="w3-padding-large" id="main">
+  <!-- Header/Home -->
+  <header class="w3-container w3-padding-32 w3-center w3-black" id="home">
+    <h1 class="w3-jumbo"><span class="w3-hide-small">I'm </span> Emergency Form.</h1>
+    <p>State your needs.</p>
+  </header>
+
+  <!-- About Section -->
+  <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="about">
+    <h2 class="w3-text-light-grey">What Am I ?</h2>
+    <hr style="width:200px" class="w3-opacity">
+    <h4>Hello, i am <strong> Emergency Form Portal.</strong> <br>You can state your needs and urgency to me. We will be providing your needs soon as possible (;
+    </h4>
+    
+    </div>
+    
+  </div>
+  
+
+
+  <!-- Form Section -->
+  <div class="w3-padding-64 w3-content w3-text-grey" id="form">
+    <h2 class="w3-text-light-grey">Form Filling</h2>
+    <hr style="width:200px" class="w3-opacity">
+
+    <form action="/get">
+     <p><input class="w3-input w3-padding-16" type="text" name="input1" placeholder="Name" required ></p>
+     <p> <input class="w3-input w3-padding-16" type="text" name="input2" placeholder="Address" required></p>
+     <p> <input class="w3-input w3-padding-16" type="text" name="input3" placeholder="Email" required ></p>
+     <p><input class="w3-input w3-padding-16" type="text" name="input4" placeholder="Mob. Number" required ><br><br></p>
+      
+      <h3 class="w3-padding-24 w3-text-light-grey">Check Your Needs</h3>
+      <hr style="width:200px" class="w3-opacity">
+      <div class="w3-padding-16 "><h4><b>
+         <input type="checkbox" name="needc" id="Clothing" >  
+        <label for="Clothing">Clothing</label> <br><br> 
+        <input type="checkbox" name="needf" id="Food Items">  
+        <label for="Food Items">Food Items</label> <br><br> 
+        <input type="checkbox" name="needa" id="Medical"> 
+        <label for="Medical">Medical</label> <br><br> 
+        <input type="checkbox" name="neede" id="powerbkp">  
+        <label for="powerbkp">Power Backup</label>  </h4></b>
+         </div><br><br>
+
+        <h3 class="w3-padding-24 w3-text-light-grey">Describtion</h3>
+        <hr style="width:200px" class="w3-opacity">
+
+      <p>
+        <button class="w3-button w3-light-grey w3-padding-large"    type="submit" value="Submit">Submit</button> 
+        <button class="w3-button w3-light-grey w3-padding-large"   type="reset" value="reset">Reset</button>
+      </p>
+    </form>
+
+  <!-- End Form Section -->
+  </div>
+  
+    <!-- Footer -->
+  <footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge">
+    <hr style="width:250px" class="w3-opacity">
+    <p>Thank You</p>
+    <h6 class="w3-content w3-justify ">We will be in contact Soon</h6>
+   <!-- End footer -->
+  </footer>
+
+<!-- END PAGE CONTENT -->
+</div>
+
+</body>
+</html>
