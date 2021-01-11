@@ -7,19 +7,18 @@ esp8266 based client and server (rpi) communication project with lora
 
 
 # ESP8266 OR ESP32
- ## CLIENT SIDE
-   * `/esp8266_or32/Data`  
-   This folder contains the html page which loads in the client side   
-   *the data is uploaded via spiffs  
+  ## CLIENT SIDE
+  * `/esp8266_or32/Data`  
+  This folder contains the html page which loads in the client side   
+  * the data is uploaded via spiffs  
 
 # RASPBERRY
- ## SERVER SIDE
-   *accepts client form data via lora   
-   * uploads to cloud   
-   **configure `server.py` with firebase url**
+## SERVER SIDE  
+  * accepts client form data via lora   
+  * uploads to cloud   
+  **configure `server.py` with firebase url**
 
 #  WEBPAGE
  ## CLOUD 
-   *sort and list the firebase data in to table  
-   **configure `index.html` with firebase config and api**
-             
+   * sort and list the firebase data in to table  
+   **configure `index.html` with firebase config and api**              
