@@ -15,7 +15,7 @@ esp8266 based client and server (rpi) communication project with lora
 # RASPBERRY
  ## SERVER SIDE
    *accepts client form data via lora 
-   * uploads to cloud
+   * uploads to cloud 
    **configure `server.py` with firebase url**
 
 #  WEBPAGE
