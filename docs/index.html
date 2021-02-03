@@ -1,143 +1,207 @@
 <!DOCTYPE HTML>
 <!--
-	Caminar by TEMPLATED
-	templated.co @templatedco
-	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+	Stellar by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
 	<head>
-		<title>Emergency Database</title>
+		<title>Stellar by HTML5 UP</title>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" href="css/main.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
-	
-	<body>
-		
-		<div id="snowflakeContainer">
-			<span class="snowflake"></span>
-		  </div>
+	<body class="is-preload">
 
-		<!-- Header -->
-			<header id="header">
-				<div class="logo"><a href="#">DRCM Database<span>by Team DRCM</span></a></div>
-			</header>
+		<!-- Wrapper -->
+			<div id="wrapper">
 
-		<!-- Main -->
-			<section id="main">
-				
-				<div class="inner">
+				<!-- Header -->
+					<header id="header" class="alt">
+						<span class="logo"><img src="images/logo.svg" alt="" /></span>
+						<h1>DRCM</h1>
+						<p>An opensource communication managment project for any disaster <br />
+						</p>
+					</header>
 
-				<!-- One -->
-					<section id="one" class="wrapper style1">
-	<!--div class="image fit flush">
-							<img src="images/pic02.jpg" alt="" />
-						</div-->
-						<header class="special">
-							
-								<a class="weatherwidget-io" href="https://forecast7.com/en/64d96n19d02/iceland/" data-label_1="ICELAND" data-label_2="WEATHER" >ICELAND</a>
-							<script>
-							!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
-							</script>
-							
-						</header>
-					
-					</section>
+				<!-- Nav -->
+					<nav id="nav">
+						<ul>
+							<li>  <a href="#intro" class="active">INTRODUCTION</a></li>
+							<li><a href="#first">WORKING</a></li>
+							<li><a href="#cta">GET STARTED</a></li>
+						</ul>
+					</nav>
 
-				<!-- Two -->
-					<section id="two" class="wrapper style2">
-						<header>
-							<h2>DRCM DATA TABLE</h2>
-							<p>This One Keeps Updating</p>
-						</header>
+				<!-- Main -->
+					<div id="main">
 
-						
-						<div class="content">
-							<div class="align">
-								<a>Please open in desktop mode or view in landscape Mode</a>
-						  <a>Happy Spectating(;</a>
-							  </div>
-
-							<div class="row">
-	
-								<table id="table">
-									<thead>
-										<tr>
-											<th>NAME</th>
-											<th>ADDRESS</th>
-											<th>Email</th>
-											<th>MOB NO.</th>
-											<th>CLOTHING</th>
-											<th>FOOD</th>
-											<th>AIDING</th>
-											<th>POWER</th>
-										</tr>
-									</thead>
-									<tbody id="content">
+						<!-- Introduction -->
+							<section id="intro" class="main">
+								<div class="spotlight">
+									<div class="content">
+										<header class="major">
+											<h2>INTRODUCTION</h2>
+										</header>
+										<p>This project is designed to provide a way of communication during any disaster .</p>
 									
-									</tbody>
-									</table>
+										<ul class="actions">
+											<li><a href="generic.html" class="button">Learn More</a></li>
+										</ul>
+									</div>
+									
+									<span class=" image icon brands major style fab fa-connectdevelop"></span>
+									
+								</div>
+							</section>
+
+						<!-- First Section -->
+							<section id="first" class="main special">
+								<header class="major">
+									<h2>WORKING</h2>
+								</header>
+								<ul class="features">
+									<li>
+			
+										<span class="icon solid major style1 fas fa-wifi"></span>
+										
+										<h3>Client</h3>
+										<p>The ESP8266 module is tuned to be in soft-AP mode (wifi-hotspot) & a local webserver which hosts a offline webpage
+											with a user input form . When user is connected via a device the captive portal opens and the value entered in form is 
+											transmitted via lora to the RPi server
+
+										</p>
+									</li>
+									<li>
+										<span class="icon solid major style2 fas fa-server"></span>
+										<h3>Server</h3>
+										<p>
+											The data send from client is recieved to raspberry via lora (p2p) . Now the data is sorted and uploaded to firebase
+											(via a network connection)
+										</p>
+									</li>
+									<li>
+										<span class="icon solid major style5  fas fa-cloud"></span>
+										<h3>Webpage & Cloud</h3>
+										<p>The sorted data is uploaded by RPi to google FIREBASE . the webpage then sortes and display the contents as a table</p>
+									</li>
+								</ul>
+								<footer class="major">
+									<ul class="actions special">
+										<li><a href="generic.html" class="button">Learn More</a></li>
+									</ul>
+								</footer>
+							</section>
+
+						<!-- Second Section >
+							<section id="second" class="main special">
+								<header class="major">
+									<h2></h2>
+									<p>Donec imperdiet consequat consequat. Suspendisse feugiat congue<br />
+									posuere. Nulla massa urna, fermentum eget quam aliquet.</p>
+								</header>
+								<ul class="statistics">
+									<li class="style1">
+										<span class="icon solid fa-code-branch"></span>
+										<strong>5,120</strong> Etiam
+									</li>
+									<li class="style2">
+										<span class="icon fa-folder-open"></span>
+										<strong>8,192</strong> Magna
+									</li>
+									<li class="style3">
+										<span class="icon solid fa-signal"></span>
+										<strong>2,048</strong> Tempus
+									</li>
+									<li class="style4">
+										<span class="icon solid fa-laptop"></span>
+										<strong>4,096</strong> Aliquam
+									</li>
+									<li class="style5">
+										<span class="icon fa-gem"></span>
+										<strong>1,024</strong> Nullam
+									</li>
+								</ul>
+								<p class="content">Nam elementum nisl et mi a commodo porttitor. Morbi sit amet nisl eu arcu faucibus hendrerit vel a risus. Nam a orci mi, elementum ac arcu sit amet, fermentum pellentesque et purus. Integer maximus varius lorem, sed convallis diam accumsan sed. Etiam porttitor placerat sapien, sed eleifend a enim pulvinar faucibus semper quis ut arcu. Ut non nisl a mollis est efficitur vestibulum. Integer eget purus nec nulla mattis et accumsan ut magna libero. Morbi auctor iaculis porttitor. Sed ut magna ac risus et hendrerit scelerisque. Praesent eleifend lacus in lectus aliquam porta. Cras eu ornare dui curabitur lacinia.</p>
+								<footer class="major">
+									<ul class="actions special">
+										<li><a href="generic.html" class="button">Learn More</a></li>
+									</ul>
+								</footer>
+							</section-->
+
+						<!-- Get Started -->
+							<section id="cta" class="main special">
+								<header class="major">
+									<ul class="statistics">
+										<li class="style4">
+											<span class="icon solid fa fa-file"></span>
+											<strong>PROJECT FILES</strong> Files(Github)
+										</li>
+										<header class="major">
+											</ul>
+									<h2></h2>
+									<p>Anyone who is intrested are welcome to modify & contribute to this project.</p>
+								</header>
+								<footer class="major">
+									<ul class="actions special">
+										<li><a href="https://github.com/Luciefer1011/DRCM" class="button primary">Get Started</a></li>
+										<li><a href="generic.html" class="button">Learn More</a></li>
+									</ul>
+								</footer>
+							</section>
+
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<section>
+							<h2></h2>
+							<p>The project is a proof of concept for an alternative communication during any emergencies,<br/>  contributed by </p>
+							<ul>
+							<i class="fa fa-user-circle" aria-hidden="true"></i>	Ananthu U S<br/>
+							<i class="fa fa-user-circle" aria-hidden="true"></i>	Mohammed Shamil<br/>
+							<i class="fa fa-user-circle" aria-hidden="true"></i>	K Martin Dennis<br/>
+							<i class="fa fa-user-circle" aria-hidden="true"></i>	Saurav Sunil
+							</ul>
+							<ul class="actions">
+								<li><a href="generic.html" class="button">Learn More</a></li>
+							</ul>
+						</section>
+						<section>
+							<!--
+							<h2>Etiam feugiat</h2>
+							<dl class="alt">
+								<dt>Address</dt>
+								<dd>1234 Somewhere Road &bull; Nashville, TN 00000 &bull; USA</dd>
+								<dt>Phone</dt>
+								<dd>(000) 000-0000 x 0000</dd>
+								<dt>Email</dt>
+								<dd><a href="#">information@untitled.tld</a></dd>
+							</dl-->
+							<ul class="icons">
 								
-							
-							</div>
+								<li><a href="https://github.com/Luciefer1011/DRCM" class="icon brands fa-github alt"><span class="label">GitHub</span></a></li>
+								
+							</ul>
+						</section>
+						<p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+					</footer>
 
+			</div>
 
-
-						</div>
-					</section>
-
-				</div>
-			</section>
-
-		<!-- Footer -->
-			<footer id="footer"> 
-				<div class="container">
-					<ul class="icons">
-						<li><a href=" https://twitter.com/xxxxx?s=08" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-						<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-						<li><a href="https://www.instagram.com/xxxxxx/" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-						<li><a href="xxxxxxxxxx@gmail.com" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
-					</ul>
-				</div>
-				<div class="copyright">
-					&copy; Untitled. All rights reserved. Owned By DRCM Team| Design By <a href="https://www.instagram.com/xxxxxxx/">Follow Up</a>
-				</div>
-			</footer>
-
-
+		<!-- Scripts -->
+		
 			
 
-
-			<script src="https://www.gstatic.com/firebasejs/7.22.1/firebase.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-
-<script src="https://www.gstatic.com/firebasejs/7.22.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.22.1/firebase-analytics.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.22.1/firebase-database.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.22.1/firebase-firestore.js"></script>
-
-<!-- USE YOUR FIREBASE CONFIGURATION -->
-
-<script language="JavaScript" type="text/javascript">
-
-  var firebaseConfig = {
-	apiKey: "xxxxxxxxxxxxxxxxxxxxxxxxxx",
-	authDomain: "xxxxxxxxxxxxxxxxxxxxxxxxxx",
-	databaseURL: "xxxxxxxxxxxxxxxxxxxxxxxxxxx",
-	projectId: "xxxxxxxxxxxxxxxxxxx",
-	storageBucket: "xxxxxxxxxxxxxxxxxxxxxxxx",
-	messagingSenderId: "xxxxxxxxxxxxxxxxxxxxx",
-	appId: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-	measurementId: "xxxxxxxxxxxxxxxxxxxxxxxxxx"
-
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
-
-</script>
-<script src="loki.js"> </script>
-<script src="blow.js"> </script>
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
 
 
 	</body>
