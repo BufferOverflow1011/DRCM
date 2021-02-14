@@ -18,7 +18,8 @@
 #include <ESPAsyncTCP.h>
 #include <ESPAsyncWebServer.h>
 #include <FS.h>
-
+#include <TinyGPS++.h>
+#include <SoftwareSerial.h>
  //define the pins used by the LoRa transceiver module
 #define ss 15
 #define rst 16
@@ -26,9 +27,23 @@
 
 #define BAND 433E6    
 
+int RXPin = 2;
+int TXPin = 0;
+int GPSBaud = 9600;
+
+TinyGPSPlus gps;
+SoftwareSerial gpsSerial(RXPin, TXPin);
 //packet counter
 int readingID = 0;
 int counter = 0;
+String latlong;
+String gps_date;
+String gps_time;
+String gps_altitude;
+
+ IPAddress ip(1,2,3,4);
+ IPAddress gateway(1,2,3,4);
+ IPAddress subnet(255,255,255,0);
 String LoRaMessage = "";
 
 AsyncWebServer server(80);
@@ -42,14 +57,13 @@ const char* needcvalue = "needc";
 const char* needfvalue = "needf";
 const char* needavalue = "needa";
 const char* needevalue = "neede";
-
   String inputMessage1 ,inputMessage2, inputMessage3, inputMessage4 ;
     String inputParam;
-    String req1;
-    String req2;
-    String req3;
-    String req4;
-    String inputMessage5;
+    String req1 = "X";
+    String req2 = "X";
+    String req3 = "X";
+    String req4 = "X";
+    String inputMessage5 = "aa";
 
    int Flag;
 
@@ -72,7 +86,74 @@ void startLoRa(){
   Serial.println("LoRa Initialization OK!");
   delay(2000);
 }
+void displayInfo()
 
+{
+  if (gps.location.isValid())
+  {
+
+
+  char c_lat[7];
+  sprintf(c_lat, "%.7f" , gps.location.lat());
+
+char c_log[7];
+sprintf(c_log, "%.7f" , gps.location.lng());
+
+latlong = String(c_lat) + "," + String(c_log);
+  Serial.println(latlong);
+   c_lat[7] = '\0';
+  c_log[7] = '\0';
+
+    gps_altitude = gps.altitude.meters();
+    Serial.println("altitude :" + gps_altitude);
+  }
+  else
+  {
+    Serial.println("Location: Not Available");
+  }
+
+  if (gps.date.isValid())
+  {
+
+    int xdate = gps.date.month();
+    int ydate = gps.date.day();
+    int zdate = gps.date.year();
+    gps_date = String(xdate)+"/"+String(ydate)+"/"+String(zdate);
+
+
+    
+    
+     Serial.println("date : " +gps_date);
+    
+  }
+  else
+  {
+    Serial.println("Not Available");
+  }
+
+  if (gps.time.isValid())
+  {
+   if (gps.time.hour() < 10);
+  int xtime = gps.time.hour() ;
+   if(gps.time.minute() < 10) ;
+   int ytime = gps.time.minute();
+  if (gps.time.second() < 10);
+    int ztime = gps.time.second();
+  
+
+    gps_time = String(xtime)+":"+ String(ytime)+":"+ String(ztime);
+     Serial.print("Time: " + gps_time);
+
+  }
+  else
+  {
+    Serial.println("Not Available");
+  }
+
+  Serial.println();
+  Serial.println();
+  delay(1000);
+}
 void webpage(){
  SPIFFS.begin();
    if(!SPIFFS.begin()){
@@ -81,19 +162,12 @@ void webpage(){
   };
 
 
-
-
-//dnsServer.start(53, "*", WiFi.softAPIP());
-//  server.addHandler(new CaptiveRequestHandler());
- // server.begin();
-
-
 if (MDNS.begin("DARK")) {        //dark.local/
     Serial.println("MDNS responder started ...");
    Serial.println("Type   dark.local/  in browser");
   }
 
-// Route for root / web page
+
   // Send web page with input fields to client
   server.on("/", HTTP_GET, [](AsyncWebServerRequest *request){
     request->send(SPIFFS, "/DarkPort.html");
@@ -152,8 +226,9 @@ if (MDNS.begin("DARK")) {        //dark.local/
     }
 
      request->send(SPIFFS,"/DarkPort.html");
-     
+      
       Flag = 0;
+       
   });
  
 // Start server
@@ -167,10 +242,13 @@ void SoftAP(){
       
   Serial.print("Setting soft-AP Fns ... ");
   WiFi.mode(WIFI_AP);
+
+ WiFi.softAPConfig(ip, gateway, subnet);
   boolean result = WiFi.softAP("EMERGENCY PORTAL");
   if(result == true)
   {
     Serial.println("Ready");
+  
     IPAddress IP = WiFi.softAPIP();
     
     Serial.print("AP IP address: ");
@@ -182,11 +260,9 @@ void SoftAP(){
   }
 }
 
-
-
 void sendReadings() {
 
- LoRaMessage = inputMessage1 + "\n" +  inputMessage2 + "\n" +  inputMessage3 + "\n"+  inputMessage4 + "\n" +  req1 + "\n" +  req2 + "\n" +  req3  + "\n" +  req4 + "\n"+ inputMessage5;
+ LoRaMessage = inputMessage1 + "\n" +  inputMessage2 + "\n" +  inputMessage3 + "\n"+  inputMessage4 + "\n" + req1 + "\n" +  req2 + "\n" +  req3  + "\n" +  req4 ;
   //Send LoRa packet to receiver
   
 LoRa.beginPacket();
@@ -220,8 +296,10 @@ class CaptiveRequestHandler : public AsyncWebHandler {
         AsyncWebServerResponse* response = request->beginResponse(SPIFFS, "/Dark.css", "text/css");
          request->send(response);
       });
-
-      webpage();
+   
+      // webpage();
+      
+    
 
     }
     virtual ~CaptiveRequestHandler() {}
@@ -235,8 +313,21 @@ class CaptiveRequestHandler : public AsyncWebHandler {
       request->send(SPIFFS, "/DarkPort.html", String(), false);
     }
 };
+void gpsstart()
+{
+      while (gpsSerial.available() > 0)
+    //Serial.write(gpsSerial.read());
+        if (gps.encode(gpsSerial.read()))
+      displayInfo();
+       if (millis() > 5000 && gps.charsProcessed() < 10)
+  {
+    Serial.println("No GPS detected");
+    while(true);
+  }}
+
 void setup() {
 Serial.begin(9600);
+gpsSerial.begin(GPSBaud);
 startLoRa();
 SoftAP();
 webpage();
@@ -247,20 +338,30 @@ server.addHandler(new CaptiveRequestHandler()).setFilter(ON_AP_FILTER);
 
 
 void loop() {
-   if (Flag == 0) {
-   sendReadings();
-   req1 ="";
-req2 = "";
-req3 = "";
-req4 = "";
+
+
+
+
+ if (Flag == 0) {
+   
+
+  sendReadings();
+   req1 ="X";
+req2 = "X";
+req3 = "X";
+req4 = "X";
   // Serial.print(Flag);
    delay(2000); 
-    Flag++;  }
-     delay(1000);
-
-inputMessage5 = "";
+    Flag++;
+    inputMessage5 = "";
 LoRaMessage = "";
+    }
+    //<-------------gps module neo6m enable -------->
+//    gpsstart(); 
+   delay(1000);
+
 dnsServer.processNextRequest();
-   MDNS.update();  //  dnsServer.processNextRequest();       
+ MDNS.update();
+dnsServer.processNextRequest();       
         
 }
